@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsInt, IsNotEmpty, IsNotEmptyObject, IsNumber, IsString } from "class-validator";
+import {IsNotEmptyObject, IsNumber, IsString } from "class-validator";
 import { criaFilmeDTO } from "src/filme/dto/insereFilme.dto";
 
 

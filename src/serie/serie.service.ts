@@ -36,7 +36,7 @@ export class SerieService {
   }
 
   async Compartilhar(id: string){
-    var serie = await (this.serieRepository // select marca.id as ID, marca.nome AS NOME_, pes_f.nome from marca ......
+    var serie = await (this.serieRepository 
       .createQueryBuilder('serie')
       .select('serie.ID', 'ID')
       .addSelect('serie.NOMESERIE','NOMESERIE')

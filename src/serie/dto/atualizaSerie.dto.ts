@@ -1,11 +1,8 @@
-import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import {  IsInt, IsNotEmpty, IsNotEmptyObject, IsNumber, IsOptional, IsString, MinLength } from "class-validator";
+import { ApiPropertyOptional } from "@nestjs/swagger";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 import { alteraFilmeDTO } from "src/filme/dto/atualizaFilme.dto";
-import { criaFilmeDTO } from "src/filme/dto/insereFilme.dto";
 
-
-
-export class alteraSerieDTO {    
+export class alteraSerieDTO extends alteraFilmeDTO{    
     @IsString()
     @IsOptional()
     @ApiPropertyOptional({

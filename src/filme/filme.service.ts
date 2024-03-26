@@ -57,7 +57,7 @@ export class FilmeService {
         filme.ANO = dados.ANO;
         filme.DURACAO = dados.DURACAO;
         filme.SINOPSE = dados.SINOPSE;
-        filme.genero = await this.generoService.localizarNOME(dados.GENERO);
+        filme.genero = await this.generoService.localizarNome(dados.GENERO);
 
     return this.filmeRepository.save(filme)
     .then((result) => {
