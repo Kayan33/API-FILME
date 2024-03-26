@@ -9,6 +9,7 @@ import { AlteraGeneroDTO } from './dto/atualizaGenero.dto';
 
 @Injectable()
 export class GeneroService {
+
   constructor(
     @Inject('GENERO_REPOSITORY')
     private generoRepository: Repository<GENERO>,
@@ -19,7 +20,6 @@ export class GeneroService {
   }
 
   async inserir(dados: CriaGeneroDTO): Promise<RetornoCadastroDTO>{
-    
     let genero = new GENERO();
         genero.ID = uuid();
         genero.NOME = dados.NOME;
@@ -50,7 +50,7 @@ export class GeneroService {
     });
   }
 
-  localizarNOME(NOME: string): Promise<GENERO> {
+  localizarNome(NOME: string): Promise<GENERO> {
     return this.generoRepository.findOne({
       where: {
         NOME,
@@ -77,5 +77,31 @@ export class GeneroService {
     });  
   }
 
-  
+  async alterar(id: string, dados: AlteraGeneroDTO): Promise<RetornoCadastroDTO> {
+    const genero = await this.localizarID(id);
+
+    Object.entries(dados).forEach(
+      ([chave, valor]) => {
+          if(chave=== 'id'){
+              return;
+          }
+
+          genero[chave] = valor;
+      }
+    )
+
+    return this.generoRepository.save(genero)
+    .then((result) => {
+      return <RetornoCadastroDTO>{
+        id: genero.ID,
+        message: "Genero alterado!"
+      };
+    })
+    .catch((error) => {
+      return <RetornoCadastroDTO>{
+        id: "",
+        message: "Houve um erro ao alterar." + error.message
+      };
+    });
+  }
 }

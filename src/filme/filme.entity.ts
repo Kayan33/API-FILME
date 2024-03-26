@@ -1,6 +1,5 @@
 import { GENERO } from "src/genero/genero.entity";
-import { SERIE } from "src/serie/serie.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn,OneToMany } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class FILME{
@@ -22,7 +21,4 @@ export class FILME{
     @ManyToOne(() => GENERO, genero => genero.produtos)
     @JoinColumn({ name: 'IDGENERO', referencedColumnName:'ID'})
     genero: GENERO;
-
-    @OneToMany(() => SERIE, serie => serie.filme)
-    produtos: SERIE[];
 }

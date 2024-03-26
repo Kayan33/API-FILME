@@ -1,6 +1,7 @@
-import { ApiPropertyOptional } from "@nestjs/swagger";
-import {  IsInt, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import {  IsInt, IsNotEmpty, IsNotEmptyObject, IsNumber, IsOptional, IsString, MinLength } from "class-validator";
 import { alteraFilmeDTO } from "src/filme/dto/atualizaFilme.dto";
+import { criaFilmeDTO } from "src/filme/dto/insereFilme.dto";
 
 
 
@@ -11,21 +12,21 @@ export class alteraSerieDTO {
         example: 'Breaking Bad',
         description: `O nome será utilizado para identificar a série.`,
     })
-    nomeSerie: string;
+    NOMESERIE: string;
 
-    @IsString()
+    @IsNumber()
     @IsOptional()
     @ApiPropertyOptional({
         example: '01',
         description: `O número é usado para identificar a ordem dos episódios`,
     })
-    episodio: string;
+    EPSODIO: number;
 
-    @IsString()
+    @IsNumber()
     @IsOptional()
     @ApiPropertyOptional({
         example: '03',
         description: `O número é usado para identificar a ordem das temporadas e para agrupar os mesmos episódios de uma temporada`,
     })
-    temporada: string;
+    TEMPORADA: number;
 }

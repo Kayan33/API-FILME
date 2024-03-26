@@ -1,35 +1,39 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsInt, IsNotEmpty, IsString } from "class-validator";
+import { IsEmail, IsInt, IsNotEmpty, IsNotEmptyObject, IsNumber, IsString } from "class-validator";
 import { criaFilmeDTO } from "src/filme/dto/insereFilme.dto";
 
 
 
 export class criaSerieDTO {    
+    @IsNotEmptyObject()
+    dadosFilme: criaFilmeDTO;
+
     @IsString()
     @ApiProperty({
         example: 'Breaking Bad',
         description: `O nome será utilizado para identificar a série.`,
     })
-    nomeSerie: string;
+    NOMESERIE: string;
 
-    @IsString()
+    @IsNumber()
     @ApiProperty({
         example: '01',
         description: `O número é usado para identificar a ordem dos episódios`,
     })
-    episodio: string;
 
-    @IsString()
+    EPSODIO: number;
+
+    @IsNumber()
     @ApiProperty({
         example: '03',
         description: `O número é usado para identificar a ordem das temporadas e para agrupar os mesmos episódios de uma temporada`,
     })
-    temporada: string;
-
+    TEMPORADA: number;
+    
     @IsString()
     @ApiProperty({
-        example: '20b4d2b8-c682-4e64-bc05-a32b76d4ba13',
-        description: `ID do FILME do filme`,
+        example: 'Drama',
+        description: `Genero é a classificação de segmento de um filme`,
     })
-    FILME: string;
+    GENERO: string;
 }

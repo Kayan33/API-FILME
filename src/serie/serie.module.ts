@@ -6,7 +6,7 @@ import { generoProviders } from "src/genero/genero.providers";
 import { GeneroService } from "src/genero/genero.service";
 import { SerieController } from "./serie.controller";
 import { serieProviders } from "./serie.providers";
-import { serieService } from "./serie.service";
+import { SerieService } from "./serie.service";
 
 @Module({
     imports: [DatabaseModule],
@@ -14,7 +14,7 @@ import { serieService } from "./serie.service";
     providers: [
 
         ...serieProviders,
-        serieService,
+        SerieService,
     ...filmeProviders,
     FilmeService,
     ...generoProviders,
