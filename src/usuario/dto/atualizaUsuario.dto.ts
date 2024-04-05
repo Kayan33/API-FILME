@@ -13,13 +13,13 @@ export class AlteraUsuarioDTO{
     })
     nome:string;
     
-    @IsInt()
-    @IsOptional()
-    @ApiPropertyOptional({
-        example: '18',
-        description: `A idade é utilizada para identificar a idade do usuário, deve ser numérico.`,
-    })
-    idade: number;
+    // @IsInt()
+    // @IsOptional()
+    // @ApiPropertyOptional({
+    //     example: '18',
+    //     description: `A idade é utilizada para identificar a idade do usuário, deve ser numérico.`,
+    // })
+    // idade: number;
 
     @IsString()
     @IsOptional()
